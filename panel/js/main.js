@@ -29,5 +29,18 @@ fetch("http://localhost:8000/server/Auth.php").then(response => response.json())
                 datacontainer.appendChild(item)
             }
         })
+
+        document.querySelector("#search").addEventListener("keyup", (e) => {
+            const term = e.target.value.toLowerCase()
+            const posts = document.querySelectorAll(".post")
+            Array.from(posts).forEach((post) => {
+                const title = post.textContent
+                if (title.toLowerCase().indexOf(term) != -1) {
+                    post.style.display = 'block'
+                } else {
+                    post.style.display = 'none'
+                }
+            })
+        })
     }
 })
